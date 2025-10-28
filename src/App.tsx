@@ -342,23 +342,115 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
+      <footer className="bg-[#1a1a1a] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2">
-              <Sparkles className="h-6 w-6 text-fucsia" />
-              <span className="text-xl font-bold font-serif">IK Ponte Guapa</span>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            {/* Columna 1: Marca */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Sparkles className="h-6 w-6 text-fucsia" />
+                <h3 className="text-xl font-bold font-serif">IK Ponte Guapa</h3>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Alta costura exclusiva creada con pasión y dedicación. 
+                Transformando sueños en realidad, una puntada a la vez.
+              </p>
+              <div className="flex space-x-4 pt-2">
+                <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-fucsia transition">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-fucsia transition">
+                  <Phone className="h-5 w-5" />
+                </a>
+                <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-fucsia transition">
+                  <Mail className="h-5 w-5" />
+                </a>
+              </div>
             </div>
-            <p className="text-gray-400">
-              © 2024 IK Ponte Guapa. Todos los derechos reservados.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-fucsia transition">
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-fucsia transition">
-                <Mail className="h-6 w-6" />
-              </a>
+
+            {/* Columna 2: Enlaces Rápidos */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#coleccion" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Colección
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Sobre Mí
+                  </a>
+                </li>
+                <li>
+                  <a href="#contacto" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Contacto
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Columna 3: Servicios */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Servicios</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Vestidos de Novia
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Alta Costura
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Diseño Personalizado
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-fucsia transition text-sm">
+                    Ajustes y Arreglos
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Columna 4: Contacto */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+              <ul className="space-y-3">
+                <li className="text-gray-400 text-sm">
+                  <span className="block font-semibold text-white mb-1">Teléfono</span>
+                  +1 (555) 123-4567
+                </li>
+                <li className="text-gray-400 text-sm">
+                  <span className="block font-semibold text-white mb-1">Email</span>
+                  info@ikponteguapa.com
+                </li>
+                <li className="text-gray-400 text-sm">
+                  <span className="block font-semibold text-white mb-1">Horario</span>
+                  Lun - Sáb: 10:00 - 18:00
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Línea divisoria */}
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-gray-500 text-sm">
+                © 2025 IK Ponte Guapa. Todos los derechos reservados.
+              </p>
+              <div className="flex space-x-6 text-sm">
+                <a href="#" className="text-gray-500 hover:text-fucsia transition">
+                  Política de Privacidad
+                </a>
+                <a href="#" className="text-gray-500 hover:text-fucsia transition">
+                  Términos y Condiciones
+                </a>
+              </div>
             </div>
           </div>
         </div>
