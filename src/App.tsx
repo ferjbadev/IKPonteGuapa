@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { ShoppingBag, Menu, X, Heart, Star, Sparkles, Phone, Mail, Instagram } from 'lucide-react'
+import {  Menu, X, Star, Sparkles, Phone, Home, Package, MessageCircle, Mail, Instagram } from 'lucide-react'
 import FloatingHearts from './components/FloatingHearts'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [cart, setCart] = useState<number[]>([])
 
   const products = [
     {
@@ -51,10 +50,6 @@ function App() {
     }
   ]
 
-  const addToCart = (productId: number) => {
-    setCart([...cart, productId])
-  }
-
   return (
     <div className="min-h-screen bg-white">
       <FloatingHearts />
@@ -69,18 +64,18 @@ function App() {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#inicio" className="text-gray-800 hover:text-fucsia transition">Inicio</a>
-              <a href="#coleccion" className="text-gray-800 hover:text-fucsia transition">Colección</a>
-              <a href="#about" className="text-gray-800 hover:text-fucsia transition">Sobre Mí</a>
-              <a href="#contacto" className="text-gray-800 hover:text-fucsia transition">Contacto</a>
-              <button className="relative p-2">
-                <ShoppingBag className="h-6 w-6 text-gray-800" />
-                {cart.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-fucsia text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {cart.length}
-                  </span>
-                )}
-              </button>
+              <a href="#inicio" className="flex items-center gap-2 text-gray-800 hover:text-fucsia transition">
+                <Home className="h-5 w-5" />
+                Inicio
+              </a>
+              <a href="#coleccion" className="flex items-center gap-2 text-gray-800 hover:text-fucsia transition">
+                <Package className="h-5 w-5" />
+                Colección
+              </a>
+              <a href="#contacto" className="flex items-center gap-2 text-gray-800 hover:text-fucsia transition">
+                <MessageCircle className="h-5 w-5" />
+                Contacto
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -97,10 +92,18 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-4 space-y-3">
-              <a href="#inicio" className="block text-gray-800 hover:text-fucsia">Inicio</a>
-              <a href="#coleccion" className="block text-gray-800 hover:text-fucsia">Colección</a>
-              <a href="#about" className="block text-gray-800 hover:text-fucsia">Sobre Mí</a>
-              <a href="#contacto" className="block text-gray-800 hover:text-fucsia">Contacto</a>
+              <a href="#inicio" className="flex items-center gap-2 text-gray-800 hover:text-fucsia">
+                <Home className="h-5 w-5" />
+                Inicio
+              </a>
+              <a href="#coleccion" className="flex items-center gap-2 text-gray-800 hover:text-fucsia">
+                <Package className="h-5 w-5" />
+                Colección
+              </a>
+              <a href="#contacto" className="flex items-center gap-2 text-gray-800 hover:text-fucsia">
+                <MessageCircle className="h-5 w-5" />
+                Contacto
+              </a>
             </div>
           </div>
         )}
@@ -127,7 +130,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-fucsia/30 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
               <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=700&fit=crop" 
+                  src="./foto.png" 
                   alt="Ivana Blanco"
                   className="w-full h-auto object-cover"
                 />
@@ -137,7 +140,7 @@ function App() {
             {/* Contenido */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <p className="text-fucsia-light text-sm font-semibold tracking-widest uppercase">
+                <p className="text-fucsia-light text-xl font-semibold tracking-widest">
                   Diseñadora de Alta Costura
                 </p>
                 <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
@@ -161,11 +164,13 @@ function App() {
               {/* Botones */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a 
-                  href="#contacto"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-fucsia text-white rounded-full font-semibold hover:bg-fucsia-dark transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  href="https://wa.me/584141449767?text=Hola%20Ivana,%20me%20interesa%20conocer%20más%20sobre%20tus%20diseños%20de%20alta%20costura"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#25D366] text-white rounded-full font-semibold hover:bg-[#20BA5A] transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  <Mail className="h-5 w-5 mr-2" />
-                  Contáctame
+                  <MessageCircle className="h-5 w-5 mr-2 fill-current" />
+                  Contáctame por WhatsApp
                 </a>
                 <a 
                   href="#coleccion"
@@ -202,19 +207,6 @@ function App() {
                     alt={product.name}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition duration-300">
-                      <button 
-                        onClick={() => addToCart(product.id)}
-                        className="w-full bg-white text-gray-900 py-3 rounded-full font-semibold hover:bg-fucsia hover:text-white transition"
-                      >
-                        Agregar al Carrito
-                      </button>
-                    </div>
-                  </div>
-                  <button className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition">
-                    <Heart className="h-5 w-5 text-fucsia" />
-                  </button>
                   <span className="absolute top-4 left-4 px-3 py-1 bg-fucsia text-white text-sm font-semibold rounded-full">
                     {product.category}
                   </span>
