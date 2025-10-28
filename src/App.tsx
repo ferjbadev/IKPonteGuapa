@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ShoppingBag, Menu, X, Heart, Star, Sparkles, Phone, Mail, Instagram } from 'lucide-react'
+import FloatingHearts from './components/FloatingHearts'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      <FloatingHearts />
       {/* Navigation */}
       <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
