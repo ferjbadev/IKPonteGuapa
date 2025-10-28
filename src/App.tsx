@@ -106,112 +106,74 @@ function App() {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section id="inicio" className="pt-20 min-h-screen flex items-center bg-gradient-to-br from-white via-pink-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* About Section - Hero */}
+      <section id="inicio" className="relative pt-20 min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-[#1a1a2e] to-gray-900 overflow-hidden">
+        {/* Estrellas de fondo */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+          <div className="absolute top-40 left-1/4 w-1 h-1 bg-white rounded-full animate-pulse delay-100"></div>
+          <div className="absolute top-60 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse delay-200"></div>
+          <div className="absolute top-32 right-20 w-1 h-1 bg-white rounded-full animate-pulse delay-300"></div>
+          <div className="absolute bottom-40 left-1/3 w-1 h-1 bg-white rounded-full animate-pulse delay-150"></div>
+          <div className="absolute bottom-60 right-1/4 w-1 h-1 bg-white rounded-full animate-pulse delay-250"></div>
+          <div className="absolute top-1/2 left-20 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 right-40 w-1 h-1 bg-white rounded-full animate-pulse delay-100"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Imagen */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-fucsia/30 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300">
+                <img 
+                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=700&fit=crop" 
+                  alt="Ivana Blanco"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Contenido */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight">
-                  Elegancia en
-                  <span className="block text-gradient">Alta Costura</span>
+                <p className="text-fucsia-light text-sm font-semibold tracking-widest uppercase">
+                  Diseñadora de Alta Costura
+                </p>
+                <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+                  Hola, Soy
+                  <span className="block mt-2">
+                    <span className="text-fucsia">Ivana</span> <span className="text-fucsia-light">Blanco</span>
+                  </span>
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Diseños exclusivos que realzan tu belleza natural. Cada pieza es una obra de arte creada especialmente para ti.
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Siempre en constante aprendizaje. Soy apasionada por crear diseños exclusivos de alta costura 
+                  utilizando las mejores telas, técnicas artesanales y atención al detalle para crear piezas 
+                  funcionales y visualmente impresionantes.
+                </p>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Soy una gran fanática de la moda y el arte, lo que me inspira a mantener una mente abierta 
+                  y creativa. Disfruto combinando la lógica de los patrones con la imaginación que despierta 
+                  la narrativa, creando soluciones innovadoras que marcan la diferencia.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+
+              {/* Botones */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a 
+                  href="#contacto"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-fucsia text-white rounded-full font-semibold hover:bg-fucsia-dark transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <Mail className="h-5 w-5 mr-2" />
+                  Contáctame
+                </a>
                 <a 
                   href="#coleccion"
-                  className="px-8 py-4 bg-fucsia text-white rounded-full font-semibold hover:bg-fucsia-dark transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white rounded-full font-semibold border-2 border-fucsia hover:bg-fucsia hover:border-fucsia transition"
                 >
+                  <Sparkles className="h-5 w-5 mr-2" />
                   Ver Colección
                 </a>
-                <a 
-                  href="#about"
-                  className="px-8 py-4 bg-white text-gray-900 rounded-full font-semibold border-2 border-gray-900 hover:bg-gray-900 hover:text-white transition"
-                >
-                  Conocer Más
-                </a>
-              </div>
-              <div className="flex items-center space-x-8 pt-4">
-                <div>
-                  <div className="text-3xl font-bold text-fucsia">15+</div>
-                  <div className="text-sm text-gray-600">Años de Experiencia</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-fucsia">500+</div>
-                  <div className="text-sm text-gray-600">Clientas Felices</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-fucsia">100%</div>
-                  <div className="text-sm text-gray-600">Hecho a Mano</div>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-fucsia/20 to-transparent rounded-3xl transform rotate-3"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1558769132-cb1aea1f1f57?w=800&h=1000&fit=crop" 
-                alt="Alta Costura"
-                className="relative rounded-3xl shadow-2xl w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-           {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-pink-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-fucsia/20 to-transparent rounded-3xl transform -rotate-3"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=1000&fit=crop" 
-                alt="Ivana Blanco"
-                className="relative rounded-3xl shadow-2xl w-full object-cover"
-              />
-            </div>
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                  Sobre Mí
-                </h2>
-                <h3 className="text-2xl text-fucsia font-semibold mb-6">Ivana Blanco</h3>
-              </div>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p className="text-lg">
-                  Con más de <span className="font-bold text-fucsia">15 años de experiencia</span> en el mundo de la alta costura, 
-                  he dedicado mi vida a crear piezas únicas que realzan la belleza y personalidad de cada mujer.
-                </p>
-                <p className="text-lg">
-                  Mi pasión por la moda comenzó desde muy joven, y con los años he perfeccionado mi técnica 
-                  trabajando con las telas más finas y los diseños más exclusivos. Cada prenda que sale de mi 
-                  atelier es una obra de arte única, creada con amor y dedicación.
-                </p>
-                <p className="text-lg">
-                  En <span className="font-bold">IK Ponte Guapa</span>, no solo creamos ropa, creamos experiencias. 
-                  Cada clienta recibe atención personalizada para asegurar que su prenda sea perfecta en cada detalle.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-6 pt-6">
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-fucsia">15+</div>
-                  <div className="text-gray-600">Años de Experiencia</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-fucsia">500+</div>
-                  <div className="text-gray-600">Diseños Creados</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-fucsia">100%</div>
-                  <div className="text-gray-600">Satisfacción</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-fucsia">Premium</div>
-                  <div className="text-gray-600">Calidad Garantizada</div>
-                </div>
               </div>
             </div>
           </div>
