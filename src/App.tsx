@@ -189,7 +189,7 @@ function App() {
                   atelier es una obra de arte única, creada con amor y dedicación.
                 </p>
                 <p className="text-lg">
-                  En <span className="font-bold">Ponte Guapa</span>, no solo creamos ropa, creamos experiencias. 
+                  En <span className="font-bold">IK Ponte Guapa</span>, no solo creamos ropa, creamos experiencias. 
                   Cada clienta recibe atención personalizada para asegurar que su prenda sea perfecta en cada detalle.
                 </p>
               </div>
