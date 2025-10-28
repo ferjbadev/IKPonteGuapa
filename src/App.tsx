@@ -395,8 +395,8 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             {/* Columna 1: Marca */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
+            <div className="space-y-4 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start space-x-2">
                 <Sparkles className="h-6 w-6 text-fucsia" />
                 <h3 className="text-xl font-bold font-serif">IK Ponte Guapa</h3>
               </div>
@@ -404,7 +404,7 @@ function App() {
                 Alta costura exclusiva creada con pasión y dedicación. 
                 Transformando sueños en realidad, una puntada a la vez.
               </p>
-              <div className="flex space-x-4 pt-2">
+              <div className="flex space-x-4 pt-2 justify-center md:justify-start">
                 <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-fucsia transition">
                   <Instagram className="h-5 w-5" />
                 </a>
@@ -418,7 +418,7 @@ function App() {
             </div>
 
             {/* Columna 2: Enlaces Rápidos */}
-            <div>
+            <div className="text-center md:text-left">
               <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
               <ul className="space-y-3">
                 <li>
@@ -440,7 +440,7 @@ function App() {
             </div>
 
             {/* Columna 3: Servicios */}
-            <div>
+            <div className="text-center md:text-left">
               <h4 className="text-lg font-semibold mb-4">Servicios</h4>
               <ul className="space-y-3">
                 <li>
@@ -467,7 +467,7 @@ function App() {
             </div>
 
             {/* Columna 4: Contacto */}
-            <div>
+            <div className="text-center md:text-left">
               <h4 className="text-lg font-semibold mb-4">Contacto</h4>
               <ul className="space-y-3">
                 <li className="text-gray-400 text-sm">
@@ -492,7 +492,7 @@ function App() {
               <p className="text-gray-500 text-sm">
                 © 2025 IK Ponte Guapa. Todos los derechos reservados.
               </p>
-              <div className="flex space-x-6 text-sm">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-sm items-center">
                 <a href="#" className="text-gray-500 hover:text-fucsia transition">
                   Política de Privacidad
                 </a>
