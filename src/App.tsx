@@ -1,54 +1,38 @@
 import { useState } from 'react'
-import {  Menu, X, Star, Sparkles, Phone, Home, Package, MessageCircle, Mail, Instagram } from 'lucide-react'
+import {  Menu, X, Sparkles, Phone, Home, Package, MessageCircle, Mail, Instagram } from 'lucide-react'
 import FloatingHearts from './components/FloatingHearts'
+import CategoryModal from './components/CategoryModal'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('')
 
-  const products = [
+  const mainCategories = [
     {
       id: 1,
-      name: 'Vestido de Gala Elegance',
-      price: 1200,
-      image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&h=700&fit=crop',
-      category: 'Vestidos'
+      name: 'Hombres',
+      image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=800&fit=crop',
+      description: 'Trajes, camisas y ropa formal'
     },
     {
       id: 2,
-      name: 'Traje Sastre Premium',
-      price: 950,
-      image: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=500&h=700&fit=crop',
-      category: 'Trajes'
+      name: 'Mujeres',
+      image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&h=800&fit=crop',
+      description: 'Vestidos, trajes y alta costura'
     },
     {
       id: 3,
-      name: 'Vestido Cóctel Rosé',
-      price: 850,
-      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&h=700&fit=crop',
-      category: 'Vestidos'
-    },
-    {
-      id: 4,
-      name: 'Conjunto Alta Costura',
-      price: 1500,
-      image: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=500&h=700&fit=crop',
-      category: 'Conjuntos'
-    },
-    {
-      id: 5,
-      name: 'Vestido Noche Estrellada',
-      price: 1350,
-      image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&h=700&fit=crop',
-      category: 'Vestidos'
-    },
-    {
-      id: 6,
-      name: 'Blazer Couture',
-      price: 780,
-      image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=500&h=700&fit=crop',
-      category: 'Blazers'
+      name: 'Niños y Niñas',
+      image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=600&h=800&fit=crop',
+      description: 'Ropa infantil y de fiesta'
     }
   ]
+
+  const handleCategoryClick = (categoryName: string) => {
+    setSelectedCategory(categoryName)
+    setModalOpen(true)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -146,7 +130,7 @@ function App() {
                 <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
                   Hola, Soy
                   <span className="block mt-2">
-                    <span className="text-fucsia">Ivana</span> <span className="text-fucsia-light">Blanco</span>
+                    <span className="text-fucsia">Ivana</span> <span className="text-fucsia-light">Blanco de Barrera</span>
                   </span>
                 </h1>
                 <p className="text-gray-300 text-lg leading-relaxed">
@@ -187,39 +171,45 @@ function App() {
 
 
       {/* Collection Section */}
-      <section id="coleccion" className="py-20 bg-white">
+      <section id="coleccion" className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Nuestra Colección
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Piezas únicas diseñadas con pasión y dedicación para las mujeres más exigentes
+              Diseños exclusivos para toda la familia. Selecciona una categoría para explorar.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <div key={product.id} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {mainCategories.map((category) => (
+              <div
+                key={category.id}
+                onClick={() => handleCategoryClick(category.name)}
+                className="group relative overflow-hidden rounded-3xl cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              >
+                <div className="aspect-[3/4] relative">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover"
                   />
-                  <span className="absolute top-4 left-4 px-3 py-1 bg-fucsia text-white text-sm font-semibold rounded-full">
-                    {product.category}
-                  </span>
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold text-gray-900">{product.name}</h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-fucsia">${product.price}</span>
-                    <div className="flex items-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-fucsia text-fucsia" />
-                      ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-fucsia/80 group-hover:via-fucsia/40 transition-all duration-300"></div>
+                  
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-3xl font-bold text-white mb-2">{category.name}</h3>
+                    <p className="text-white/90 text-sm mb-4">{category.description}</p>
+                    <div className="flex items-center text-white font-semibold">
+                      <span className="mr-2">Explorar</span>
+                      <span className="transform group-hover:translate-x-2 transition-transform">→</span>
                     </div>
+                  </div>
+
+                  {/* Sparkle effect */}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Sparkles className="h-8 w-8 text-white" />
                   </div>
                 </div>
               </div>
@@ -228,69 +218,154 @@ function App() {
         </div>
       </section>
 
+      {/* Category Modal */}
+      <CategoryModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        category={selectedCategory}
+      />
+
  
       {/* Contact Section */}
-      <section id="contacto" className="py-20 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contacto" className="relative py-20 bg-gradient-to-br from-gray-900 via-[#0a1628] to-gray-900 text-white overflow-hidden">
+        {/* Estrellas de fondo */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+          <div className="absolute top-40 right-1/4 w-1 h-1 bg-white rounded-full animate-pulse delay-100"></div>
+          <div className="absolute bottom-40 left-1/3 w-1 h-1 bg-white rounded-full animate-pulse delay-200"></div>
+          <div className="absolute top-1/2 right-20 w-1 h-1 bg-white rounded-full animate-pulse delay-300"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Contáctanos
+              Ponte en Contacto
             </h2>
-            <p className="text-xl text-gray-300">
-              Estamos aquí para hacer realidad tus sueños de moda
+            <p className="text-xl text-gray-400">
+              Hablemos sobre tu próximo diseño
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl backdrop-blur-sm">
-              <div className="inline-block p-4 bg-fucsia rounded-full">
-                <Phone className="h-8 w-8" />
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Columna Izquierda - Info */}
+            <div className="space-y-6">
+              {/* Location */}
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-fucsia" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-1">Ubicación</h3>
+                  <p className="text-gray-400">Apure, Venezuela</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold">Teléfono</h3>
-              <p className="text-gray-300">+1 (555) 123-4567</p>
-            </div>
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl backdrop-blur-sm">
-              <div className="inline-block p-4 bg-fucsia rounded-full">
-                <Mail className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold">Email</h3>
-              <p className="text-gray-300">info@ponteguapa.com</p>
-            </div>
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl backdrop-blur-sm">
-              <div className="inline-block p-4 bg-fucsia rounded-full">
-                <Instagram className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold">Instagram</h3>
-              <p className="text-gray-300">@ponteguapa</p>
-            </div>
-          </div>
 
-          <div className="max-w-2xl mx-auto">
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  placeholder="Nombre"
-                  className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-full focus:outline-none focus:border-fucsia transition"
-                />
-                <input 
-                  type="email" 
-                  placeholder="Email"
-                  className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-full focus:outline-none focus:border-fucsia transition"
-                />
+              {/* Email */}
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-fucsia" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-1">Email</h3>
+                  <p className="text-gray-400">info@ikponteguapa.com</p>
+                </div>
               </div>
-              <textarea 
-                placeholder="Mensaje"
-                rows={6}
-                className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-3xl focus:outline-none focus:border-fucsia transition resize-none"
-              ></textarea>
-              <button 
-                type="submit"
-                className="w-full px-8 py-4 bg-fucsia text-white rounded-full font-semibold hover:bg-fucsia-dark transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+
+              {/* Phone */}
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-fucsia" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-1">Teléfono</h3>
+                  <p className="text-gray-400">+58 414 144 9767</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Columna Derecha - Tarjetas de Contacto */}
+            <div className="space-y-4">
+              {/* Available Badge */}
+              <div className="bg-gradient-to-r from-green-500/10 to-transparent border border-green-500/30 rounded-2xl p-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold">Disponible para Proyectos</h3>
+                </div>
+                <p className="text-gray-400 text-sm mt-2">
+                  Actualmente acepto proyectos de diseño personalizado y alta costura.
+                </p>
+              </div>
+
+              {/* WhatsApp Card */}
+              <a 
+                href="https://wa.me/584141449767?text=Hola%20Ivana,%20me%20interesa%20conocer%20más%20sobre%20tus%20diseños"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-[#25D366] transition-all duration-300 group"
               >
-                Enviar Mensaje
-              </button>
-            </form>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center">
+                      <MessageCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">WhatsApp</h3>
+                      <p className="text-gray-400 text-sm">Chatea conmigo al instante</p>
+                    </div>
+                  </div>
+                  <span className="text-gray-400 group-hover:text-fucsia transition">
+                    Iniciar Chat →
+                  </span>
+                </div>
+              </a>
+
+              {/* Email Card */}
+              <a 
+                href="mailto:info@ikponteguapa.com"
+                className="block bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-blue-500 transition-all duration-300 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">Email</h3>
+                      <p className="text-gray-400 text-sm">Envíame un correo</p>
+                    </div>
+                  </div>
+                  <span className="text-gray-400 group-hover:text-fucsia transition">
+                    Enviar Email →
+                  </span>
+                </div>
+              </a>
+
+              {/* Instagram Card */}
+              <a 
+                href="https://instagram.com/ikponteguapa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-fucsia transition-all duration-300 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                      <Instagram className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">Instagram</h3>
+                      <p className="text-gray-400 text-sm">Sígueme en redes</p>
+                    </div>
+                  </div>
+                  <span className="text-gray-400 group-hover:text-fucsia transition">
+                    Ver Perfil →
+                  </span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -377,7 +452,7 @@ function App() {
               <ul className="space-y-3">
                 <li className="text-gray-400 text-sm">
                   <span className="block font-semibold text-white mb-1">Teléfono</span>
-                  +1 (555) 123-4567
+                  +58 414 144 9767
                 </li>
                 <li className="text-gray-400 text-sm">
                   <span className="block font-semibold text-white mb-1">Email</span>
