@@ -39,8 +39,14 @@ export default function CategoryModal({ isOpen, onClose, category }: CategoryMod
   const items = categories[category as keyof typeof categories] || []
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-5xl bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}
+    >
+      <div 
+        className="relative w-full max-w-5xl bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="sticky top-0 bg-gradient-to-r from-fucsia to-fucsia-dark p-6 flex items-center justify-between z-10">
           <div>
@@ -84,13 +90,13 @@ export default function CategoryModal({ isOpen, onClose, category }: CategoryMod
 
         {/* Footer */}
         <div className="sticky bottom-0 bg-gray-800/95 backdrop-blur-sm p-6 border-t border-gray-700">
-          <div className="flex items-center justify-between">
-            <p className="text-gray-400 text-sm">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-400 text-sm text-center md:text-left">
               ¿No encuentras lo que buscas? <a href="https://wa.me/584141449767" className="text-fucsia hover:underline">Contáctanos</a>
             </p>
             <button
               onClick={onClose}
-              className="px-6 py-3 bg-fucsia hover:bg-fucsia-dark text-white rounded-full font-semibold transition"
+              className="w-full md:w-auto px-6 py-3 bg-fucsia hover:bg-fucsia-dark text-white rounded-full font-semibold transition"
             >
               Cerrar
             </button>
