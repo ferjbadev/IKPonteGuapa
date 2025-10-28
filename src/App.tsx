@@ -37,6 +37,14 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <FloatingHearts />
+      
+      {/* Overlay para cerrar menú móvil */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 z-40 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
       {/* Navigation */}
       <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,17 +82,29 @@ function App() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-4 space-y-3">
-              <a href="#inicio" className="flex items-center gap-2 text-gray-800 hover:text-fucsia">
+          <div className="md:hidden bg-gradient-to-br from-white to-gray-50 border-t border-gray-200 shadow-lg">
+            <div className="px-6 py-6 space-y-2">
+              <a 
+                href="#inicio" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-3 text-gray-800 hover:text-fucsia hover:bg-fucsia/5 py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+              >
                 <Home className="h-5 w-5" />
                 Inicio
               </a>
-              <a href="#coleccion" className="flex items-center gap-2 text-gray-800 hover:text-fucsia">
+              <a 
+                href="#coleccion" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-3 text-gray-800 hover:text-fucsia hover:bg-fucsia/5 py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+              >
                 <Package className="h-5 w-5" />
                 Colección
               </a>
-              <a href="#contacto" className="flex items-center gap-2 text-gray-800 hover:text-fucsia">
+              <a 
+                href="#contacto" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-3 text-gray-800 hover:text-fucsia hover:bg-fucsia/5 py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+              >
                 <MessageCircle className="h-5 w-5" />
                 Contacto
               </a>
@@ -124,21 +144,21 @@ function App() {
             {/* Contenido */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <p className="text-fucsia-light text-xl font-semibold tracking-widest">
+                <p className="text-fucsia-light text-xl font-semibold tracking-widest text-center md:text-left">
                   Diseñadora de Alta Costura
                 </p>
-                <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+                <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight text-center md:text-left">
                   Hola, Soy
                   <span className="block mt-2">
                     <span className="text-fucsia">Ivana</span> <span className="text-fucsia-light">Blanco de Barrera</span>
                   </span>
                 </h1>
-                <p className="text-gray-300 text-lg leading-relaxed">
+                <p className="text-gray-300 text-lg leading-relaxed text-center md:text-left">
                   Siempre en constante aprendizaje. Soy apasionada por crear diseños exclusivos de alta costura 
                   utilizando las mejores telas, técnicas artesanales y atención al detalle para crear piezas 
                   funcionales y visualmente impresionantes.
                 </p>
-                <p className="text-gray-300 text-lg leading-relaxed">
+                <p className="text-gray-300 text-lg leading-relaxed text-center md:text-left">
                   Soy una gran fanática de la moda y el arte, lo que me inspira a mantener una mente abierta 
                   y creativa. Disfruto combinando la lógica de los patrones con la imaginación que despierta 
                   la narrativa, creando soluciones innovadoras que marcan la diferencia.
@@ -146,7 +166,7 @@ function App() {
               </div>
 
               {/* Botones */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 items-center md:items-start">
                 <a 
                   href="https://wa.me/584141449767?text=Hola%20Ivana,%20me%20interesa%20conocer%20más%20sobre%20tus%20diseños%20de%20alta%20costura"
                   target="_blank"
@@ -173,7 +193,7 @@ function App() {
       {/* Collection Section */}
       <section id="coleccion" className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-4">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Nuestra Colección
             </h2>
@@ -237,7 +257,7 @@ function App() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-4">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Ponte en Contacto
             </h2>
@@ -250,7 +270,7 @@ function App() {
             {/* Columna Izquierda - Info */}
             <div className="space-y-6">
               {/* Location */}
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
                 <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6 text-fucsia" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -264,7 +284,7 @@ function App() {
               </div>
 
               {/* Email */}
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
                 <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
                   <Mail className="w-6 h-6 text-fucsia" />
                 </div>
@@ -275,7 +295,7 @@ function App() {
               </div>
 
               {/* Phone */}
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
                 <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
                   <Phone className="w-6 h-6 text-fucsia" />
                 </div>
