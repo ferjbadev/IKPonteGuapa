@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Heart } from 'lucide-react'
+import { Flower } from 'lucide-react'
 
 interface HeartParticle {
   id: number
@@ -59,7 +59,7 @@ export default function FloatingHearts() {
             animationDelay: `${heart.delay}s`,
           }}
         >
-          <Heart
+          <Flower
             className="text-fucsia opacity-30"
             style={{
               width: `${heart.size}px`,
