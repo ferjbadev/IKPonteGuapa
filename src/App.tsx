@@ -134,7 +134,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-fucsia/30 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
               <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="./foto2.png" 
+                  src="./foto3.png" 
                   alt="Ivana Blanco"
                   className="w-full h-auto object-cover"
                 />
@@ -150,7 +150,7 @@ function App() {
                 <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight text-center md:text-left">
                   Hola, Soy
                   <span className="block mt-2">
-                    <span className="text-fucsia">Ivana</span> <span className="text-fucsia-light">Blanco de Barrera</span>
+                    <span className="text-fucsia">Ivana</span> <span className="text-fucsia-light">Blanco</span>
                   </span>
                 </h1>
                 <p className="text-gray-300 text-lg leading-relaxed text-center md:text-left">
