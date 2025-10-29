@@ -134,7 +134,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-fucsia/30 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
               <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="./foto.png" 
+                  src="./foto2.png" 
                   alt="Ivana Blanco"
                   className="w-full h-auto object-cover"
                 />
